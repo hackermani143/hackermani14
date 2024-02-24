@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Friendship Reconciliation</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 50px;
+            background-image: url{'img.jpeg'}; /* Make sure the URL is correct */
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-color:gray;
+            {% comment %} filter: brightness(120%); /* Increase color density */ {% endcomment %}
+        }
+
+        button {
+            font-size: 16px;
+            padding: 10px 20px;
+            margin: 10px;
+            cursor: pointer;
+            position: relative;
+            border: none;
+            {% comment %} filter: brightness(120%); /* Increase color density */ {% endcomment %}
+        }
+
+        #apologyBtn {
+            background-color: #FFB6C1; /* Baby Pink */
+            color: #8FBC8F; /* Light Green */
+        }
+
+        #notAcceptedBtn {
+            background-color: #8FBC8F; /* Light Green */
+            color: #FFB6C1; /* Baby Pink */
+        }
+
+        .message {
+            color: #FFB6C1; /* Baby Pink */
+            margin: 5px 0;
+            display: inline-block;
+            overflow: hidden;
+            white-space: nowrap;
+        }
+
+        .emoji {
+            display: inline-block;
+            animation: moveEmoji 1s linear infinite;
+        }
+
+        @keyframes moveEmoji {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(100px); }
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Friendship Reconciliation</h1>
+     
+    <p id="apologyText">Hey there! I'm really sorry if I upset you. Will you accept my apology?</p>
+
+    <button id="apologyBtn" onclick="apologyAccepted()">Sorry, Accept</button>
+
+    <button id="notAcceptedBtn" onclick="notAccepted()">Not Accepted</button>
+
+    <script>
+        const messages = [
+            "I appreciate your understanding.",
+            "Thank you for your forgiveness.",
+            "Let's move forward as friends.",
+            "I promise to do better.",
+            "Thank you for your forgiveness. Let's move forward as friends."
+        ];
+
+        const loveEmojis = ['😍', '😘', '💖', '💕'];
+
+        function typeMessage(index) {
+            if (index < messages.length) {
+                const messageContainer = document.createElement("div");
+                messageContainer.className = 'message';
+                document.body.appendChild(messageContainer);
+
+                const emojiSpan = document.createElement("span");
+                emojiSpan.className = 'emoji';
+                emojiSpan.textContent = loveEmojis[index % loveEmojis.length];
+                messageContainer.appendChild(emojiSpan);
+
+                let i = 0;
+                const typingInterval = setInterval(() => {
+                    if (i < messages[index].length) {
+                        messageContainer.textContent += messages[index].charAt(i);
+                        i++;
+                    } else {
+                        clearInterval(typingInterval);
+                        typeMessage(index + 1); // Start typing the next message
+                    }
+                }, 100);
+            }
+        }
+
+        function apologyAccepted() {
+            document.getElementById("apologyBtn").style.display = "none";
+            document.getElementById("notAcceptedBtn").style.display = "none";
+            document.getElementById("apologyText").style.display = "none";
+
+            typeMessage(0); // Start typing the first message
+        }
+
+        function notAccepted() {
+            const notAcceptedBtn = document.getElementById("notAcceptedBtn");
+
+            // Move the notAcceptedBtn to a random position on the page
+            notAcceptedBtn.style.position = "absolute";
+            notAcceptedBtn.style.left = Math.floor(Math.random() * window.innerWidth) + "px";
+            notAcceptedBtn.style.top = Math.floor(Math.random() * window.innerHeight) + "px";
+        }
+    </script>
+
+</body>
+</html>
