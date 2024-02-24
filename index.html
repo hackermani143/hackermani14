@@ -4,17 +4,23 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Friendship Reconciliation</title>
+    <title>sorry shaitaan 👻</title>
     <style>
         body {
-            font-family: Arial, sans-serif;
+            color:black;
+            font-family: Cursive, sans-serif;
+            font-color:white;
             text-align: center;
             margin: 50px;
-            background-image: url{'img.jpeg'}; /* Make sure the URL is correct */
-            background-size: cover;
-            background-repeat: no-repeat;
-            background-color:gray;
+            background-color:Gray;
             {% comment %} filter: brightness(120%); /* Increase color density */ {% endcomment %}
+        }
+        body{
+            background-image: url('img.jpeg');
+            background-color: rgba(255, 255, 255, 0.4);
+            background-blend-mode: lighten;
+            background-size: 100px 100px;
+            background-repeat: x-repeat;
         }
 
         button {
@@ -38,7 +44,7 @@
         }
 
         .message {
-            color: #FFB6C1; /* Baby Pink */
+            color: black; /* Baby Pink */
             margin: 5px 0;
             display: inline-block;
             overflow: hidden;
@@ -58,8 +64,9 @@
 </head>
 <body>
 
-    <h1>Friendship Reconciliation</h1>
-     
+    <h1>Sorry Topper 👻</h1>
+    <p style="background-image: url('img.jpeg');">
+
     <p id="apologyText">Hey there! I'm really sorry if I upset you. Will you accept my apology?</p>
 
     <button id="apologyBtn" onclick="apologyAccepted()">Sorry, Accept</button>
@@ -73,6 +80,7 @@
             "Let's move forward as friends.",
             "I promise to do better.",
             "Thank you for your forgiveness. Let's move forward as friends."
+            
         ];
 
         const loveEmojis = ['😍', '😘', '💖', '💕'];
